@@ -3,9 +3,6 @@ import csv
 from pathlib import Path
 from datetime import datetime, timedelta
 
-Path("./Data/ProcessedForex/").mkdir(parents=True, exist_ok=True)
-Path("./Data/ProcessedFTSE/").mkdir(parents=True, exist_ok=True)
-
 ApiKeys = []
 e = open("APIKEYS.txt", "r")
 for y in e:
@@ -14,6 +11,8 @@ e.close()
 
 
 def processdata():
+    Path("./Data/ProcessedForex/").mkdir(parents=True, exist_ok=True)
+    Path("./Data/ProcessedFTSE/").mkdir(parents=True, exist_ok=True)
     with open("FOREX.txt", "r") as forex:
         for line in forex:
             with open("./Data/" + line.strip() + ".txt", "r") as forex2:
@@ -199,6 +198,6 @@ download("FTSE", ApiKeys[0])
 input2 = ""
 while input2 == "":
     input2 = input(
-        "type process if processing is needed. Delete files before doing so. otherwise type anything and press Enter")
+        "type 'process' if processing is needed. Delete files before doing so. otherwise type 'quit' and press Enter: ")
     if input2 == "process":
         processdata()

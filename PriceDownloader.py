@@ -70,13 +70,15 @@ def download(inp, api):
 
                     start = datetime.strptime(last_line[1], "%Y%m%d").strftime("%Y-%m-%d")
                 except Exception:
-                    start = "2018-01-01"
+                    start = "2015-01-01"
 
-                currenttime = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+                # currenttime = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+                currenttime = "2018-01-01"
 
                 if currenttime == start:
                     print("No dates to download for!")
                     continue
+
                 print(start)
                 print(currenttime)
 
@@ -193,7 +195,7 @@ def download(inp, api):
 
 
 download("FOREX", ApiKeys[0])
-download("FTSE", ApiKeys[0])
+# download("FTSE", ApiKeys[0])
 
 input2 = ""
 while input2 == "":
